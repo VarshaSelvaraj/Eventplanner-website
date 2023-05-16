@@ -1,0 +1,183 @@
+<html>
+<head>
+<title>Registration form</title>
+<script>
+  
+function formvalidate()
+{
+    var fn=document.f.fname.value;
+    var ln=document.f.lname.value;
+    var ph=document.f.phn.value;
+    var gm=document.f.male.value;
+    var gf=document.f.female.value;
+    var ps=document.f.pwd.value;
+    var rps=document.f.rpwd.value;
+   
+   
+var errors =[];
+  if(fn=="")
+    errors[errors.length]= "First-Name must not be empty";
+  if(ln=="")
+    errors[errors.length]= "Last-Name must not be empty";
+  if(fn!==""&&ln!=="") {
+    if(fn==ln)
+      errors[errors.length]= "First-Name and Last-Name must be different";
+    if(document.f.male.checked==0 && document.f.female.checked==0)
+      errors[errors.length]= "Gender must be selected"; 
+    
+    if(ps!==rps)
+      errors[errors.length]= "Re-type your password correctly";
+    
+  }
+  
+  
+  if(errors.length > 0) 
+      reportErrors(errors);
+  else
+      alert("Hello "+fn+" "+ln+", your registration is successfull!");
+  function reportErrors(errors){
+    var msg = "Please Enter Valid Data!\n";
+    for (var i = 0; i<errors.length; i++) {
+      var numError = i + 1;
+      msg += "\n" + numError + ". " + errors[i];
+      }
+      alert(msg);
+  }
+}  
+
+</script>
+
+<style>
+.div1 {
+  height: 900px;
+  width: 55%;
+  border: 3px ;
+  color: aliceblue;  
+  opacity: 80%; 
+  text-align: left;
+  margin: auto;
+  padding: 10px;
+  min-height: 380px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+label {
+        display: inline-block;
+        width: 150px;
+        color: #f4eeee;
+      }
+      input {
+        padding: 5px 10px;
+      }
+      select{
+        padding: 5px 10px;
+      }
+body{
+  font-family: Calibri, Helvetica, sans-serif;
+  font-size: 16px;
+  background-image: url('fb.jpg');
+  
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+h1{
+  font-size: 22px;
+}
+input[type=text]:focus, input[type=password]:focus {
+  background-color:rgb(132, 167, 180);
+  outline: none;
+}
+.regbtn {
+  background-color: #14711a;
+  color: black;
+  padding: 15px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 40%;
+  opacity: 0.9;
+  font-size: medium;
+}
+.regbtn:hover {
+  opacity: 2;
+}
+
+.colr{
+            color:#bdbeca;
+            text-decoration: none;
+        }
+</style>
+</head>
+
+<form name="f" action="http://localhost:4022" method="GET" onsubmit="formvalidate()" >
+<div class="div1">
+<center><h1>Create a new account</h1></center>
+<center><p class="text-muted">Get connected with us!</p></center>
+<hr><br>
+<fieldset>
+<legend>Personal Details</legend>
+<label for="fname">First name :</label>
+<input type="text" id="fname" name="fname" placeholder="Enter your firstname" pattern=[a-zA-Z]{3,}  AUTOFOCUS><br><br>
+<label for="lname">Last name :</label>
+<input type="text" id="lname" name="lname" placeholder="Enter your lastname" pattern=[a-zA-Z]{3,} ><br><br>
+<label for="pwd">Password:</label>
+<input type="password" id="pwd" name="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase  and lowercase letter, and at least 8 or more characters" placeholder="Enter your password" required><br><br>
+<label for="rpwd">Confirm Password:</label>
+<input type="password" id="rpwd" name="rpwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase  and lowercase letter, and at least 8 or more characters" placeholder="Re-type password" required><br><br>
+<label>Gender:</label><input type="radio" id="male" name="male" value="male"  >
+  <label for="male">Male</label><input type="radio" id="female" name="female" value="female">
+  <label for="female">Female</label><br><br>
+  <label for="email">Email :</label>
+  <input type="text" id="email" name="email" placeholder="Enter your email address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid Email!" ><br><br>
+  <label for="ccode">Phone :  </label>  
+  <input type="text" name="ccode"  value="+91" size="2" disabled>   
+  <input type="text" name="phn" id="phn" size="10" placeholder="phone number" pattern=[0-9]{10}> <br> <br> 
+</fieldset><br>
+
+<fieldset>
+<legend>Location Details</legend>
+<label for="address">Address :</label>
+<textarea name="message" rows="3" cols="23" placeholder="Enter your address"></textarea><br><br>
+<label for="coun">Country:</label>
+<select id="type" name="add">
+<option value="Albania" selected="selected">Albania</option>
+<option value="Algeria">Algeria</option>
+<option value="Austria">Austria</option>
+<option value="Azerbaijan">Azerbaijan</option>
+<option value="Bahamas">Bahamas</option>
+<option value="Dominican Republic">Dominican Republic</option>
+<option value="East Timor">East Timor</option>
+<option value="Ecuador">Ecuador</option>
+<option value="Finland">Finland</option>
+<option value="France">France</option>
+<option value="Gabon">Gabon</option>
+<option value="Gambia">Gambia</option>
+<option value="Haiti">Haiti</option>
+<option value="Iceland">Iceland</option>
+<option value="India">India</option>
+<option value="Indonesia">Indonesia</option>
+<option value="Kazakhstan">Kazakhstan</option>
+<option value="Kenya">Kenya</option>
+<option value="Kiribati">Kiribati</option>
+<option value="Korea">Korea, Republic of</option>
+<option value="Kuwait">Kuwait</option>
+</select><br><br>
+<label for="state">State:</label>
+<input type="text" id="state" name="state" placeholder="Enter your state"><br><br>
+<label for="pin">Pin Code :</label>
+<input type="number" id="pin" name="pin" placeholder="Enter your pin code"><br><br>
+  <label for="add">Address Type :</label>
+  <select id="type" name="add">
+    <option value="home">Home</option>
+    <option value="off">Office</option>
+    <option value="other">Others</option>
+  </select>
+</fieldset><br>
+<center><b><input type="submit" value="Register" name="submit"  class="regbtn"></b>
+<br>
+Already a member?&emsp14;&emsp13;<a href="sign.html" class="colr" >Login</a><br><br></center>
+</div>
+</form>
+</html>
